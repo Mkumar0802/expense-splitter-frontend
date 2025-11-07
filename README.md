@@ -1,162 +1,161 @@
-💸 Expense Splitter Frontend
+# Expense Splitter Frontend
 
-A modern, responsive Svelte-based web app for splitting expenses among friends, roommates, or groups — designed for simplicity, accuracy, and great user experience.
+A modern, responsive Svelte-based application for managing shared expenses among friends and roommates. Split bills effortlessly with real-time calculations, balance tracking, and an intuitive user interface.
 
-🚀 Overview
+## ✨ Features
 
-The Expense Splitter Frontend is the client-side application of the Expense Splitter system.
-It helps users add friends, record shared expenses, and calculate who owes whom automatically — all with real-time feedback and a clean, mobile-friendly interface.
+- **👥 User Management** — Add, edit, and manage users with comprehensive validation
+- **💰 Expense Tracking** — Create and categorize expenses with flexible participant selection
+- **⚖️ Balance Calculation** — View settlement balances and understand who owes whom at a glance
+- **🎨 Modern UI** — Clean, responsive design built with Tailwind CSS
+- **📱 Real-time Updates** — Instant calculations and live feedback across all pages
+- **🔔 Smart Notifications** — Toast notifications for all user actions and errors
+- **🔍 Enhanced Search** — Searchable user selection with multi-select capabilities
+- **📊 Expense History** — Complete history of all transactions with details
 
-✨ Features
-👥 User Management
+## 📋 Prerequisites
 
-Add, edit, and view users with real-time validation.
+Before getting started, ensure you have the following installed:
 
-Optional phone numbers with auto-formatting and Indian mobile validation.
+- **Node.js** v16 or higher ([download here](https://nodejs.org/))
+- **npm** v7 or higher (comes with Node.js)
+- **Backend API** running on `http://localhost:5000` (Expense Splitter backend)
 
-💰 Expense Tracking
+## 🚀 Getting Started
 
-Create expenses with automatic equal split calculations.
+### 1. Clone the Repository
 
-Auto-includes the payer in the participants list.
+```bash
+git clone <repository-url>
+cd expense-splitter-frontend
+```
 
-⚖️ Balance Calculation
+### 2. Install Dependencies
 
-Displays clear settlement overviews of who owes whom.
+```bash
+npm install
+```
 
-Automatically recalculates balances after each expense.
+### 3. Configure Backend Connection
 
-🎨 Modern UI
+Ensure your backend API is accessible at `http://localhost:5000`. The API configuration is located in `src/api/api.js` and can be modified if your backend runs on a different URL.
 
-Built with Svelte + Tailwind CSS.
+### 4. Start Development Server
 
-Clean, intuitive interface with responsive design.
+```bash
+npm run dev
+```
 
-🔔 Notifications
+The application will automatically open at `http://localhost:5173` with hot-reload enabled.
 
-Toast-based feedback using svelte-french-toast.
+## 📁 Project Structure
 
-Smooth user feedback for every action (success, warning, error).
-
-🔍 Smart Search
-
-Powerful search and filter options in the participant selector.
-
-🧩 Project Structure
+```
 expense-splitter-frontend/
 ├── src/
 │   ├── api/
-│   │   └── api.js                 # Axios configuration & API abstraction
+│   │   └── api.js                    # Axios instance and API endpoints
 │   ├── components/
-│   │   ├── ExpenseForm.svelte     # Create new expenses
-│   │   ├── ExpenseList.svelte     # List and view expenses
-│   │   ├── MultiSelectCheckbox.svelte # Smart participant selector
-│   │   ├── Navbar.svelte          # Navigation bar
-│   │   └── UserForm.svelte        # Add new users with validation
+│   │   ├── ExpenseForm.svelte        # Expense creation form
+│   │   ├── ExpenseList.svelte        # Expense display list
+│   │   ├── MultiSelectCheckbox.svelte # Reusable multi-select component
+│   │   ├── Navbar.svelte             # Navigation header
+│   │   └── UserForm.svelte           # User addition form
 │   ├── pages/
-│   │   ├── Balance.svelte         # Balance overview
-│   │   ├── Expenses.svelte        # Expenses page
-│   │   └── Users.svelte           # Users page
-│   ├── stores/                    # (Optional) Svelte writable stores
-│   ├── utils/                     # Utility helpers
-│   ├── App.svelte                 # Root component
-│   ├── main.js                    # Application entry point
-│   └── app.css                    # Global styles
+│   │   ├── Balance.svelte            # Balance overview and settlements
+│   │   ├── Expenses.svelte           # Expense management interface
+│   │   └── Users.svelte              # User management interface
+│   ├── stores/                       # Svelte stores for global state
+│   ├── utils/                        # Helper functions and utilities
+│   ├── App.svelte                    # Root application component
+│   ├── main.js                       # Application entry point
+│   └── app.css                       # Global styles and Tailwind imports
+├── public/                           # Static assets
 ├── package.json
-├── tailwind.config.js             # Tailwind setup
-├── vite.config.js                 # Vite bundler config
-└── svelte.config.js               # Svelte compiler config
+├── tailwind.config.js                # Tailwind CSS configuration
+├── vite.config.js                    # Vite bundler configuration
+├── svelte.config.js                  # Svelte compiler configuration
+└── README.md                         # This file
+```
 
-🛠️ Prerequisites
+## ⚡ Available Scripts
 
-Before running this project, ensure you have:
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with hot module reloading |
+| `npm run build` | Build optimized production bundle |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint to check code quality |
+| `npm run format` | Format code with Prettier |
 
-Node.js ≥ 16.x → Download here
+## 🎯 Core Components
 
-Backend API → Expense Splitter Backend running at
-http://localhost:5000
+### Pages
 
-⚡ Quick Start
-1️⃣ Install Dependencies
-npm install
+**Users Page** — Manage all users in your expense group. Add new users, view existing ones, and delete users if needed.
 
-2️⃣ Start Backend Server
+**Expenses Page** — Create new expenses and view complete transaction history. Specify the payer, amount, date, and participants for each expense.
 
-Ensure your backend (Node.js/Express or similar) is running at:
+**Balance Page** — View settlement status between all users. See who owes whom and calculate optimal settlement payments.
 
-http://localhost:5000
+### Components
 
-3️⃣ Run Frontend
-npm run dev
+**ExpenseForm** — Intelligent form component that automatically includes the payer in the expense participants list. Includes date selection, amount entry, and multi-user selection.
 
+**UserForm** — Add new users to your expense group with built-in validation for names and phone numbers. Includes automatic phone number formatting.
 
-Then open: http://localhost:5173
+**MultiSelectCheckbox** — Reusable component for selecting multiple users with search functionality, select-all option, and clear selection button.
 
-📋 Available Scripts
-Command	Description
-npm run dev	Start development server with hot reload
-npm run build	Build optimized production bundle
-npm run preview	Preview production build locally
-npm run lint	Lint code using ESLint
-npm run format	Auto-format code using Prettier
-🎯 Key Components
-Component	Description
-ExpenseForm.svelte	Smart form for creating expenses with payer auto-inclusion
-MultiSelectCheckbox.svelte	Searchable user selector with select-all toggle
-UserForm.svelte	Add users with name/phone validation and toast feedback
-ExpenseList.svelte	Displays expense history and summaries
-Balance.svelte	Calculates and displays settlements
-Navbar.svelte	Responsive navigation bar
-🔌 API Integration
+**ExpenseList** — Displays all expenses in a sortable, readable format with expense amount, date, payer, and participant information.
 
-The frontend communicates with the backend using centralized API helpers (src/api/api.js) via Axios.
+**Navbar** — Navigation component for seamless movement between pages with visual indicators of the current page.
 
-Users API
-Method	Endpoint	Description
-GET	/users	Fetch all users
-POST	/users	Create a new user
-Expenses API
-Method	Endpoint	Description
-GET	/expenses	Get all expenses
-POST	/expenses	Create a new expense
-Balances API
-Method	Endpoint	Description
-GET	/balances	Fetch calculated balances
-🎨 Styling & UI
+## 🔌 API Integration
 
-Framework: Tailwind CSS
+The frontend communicates with your backend through RESTful endpoints:
 
-Colors:
+### Users Endpoints
+- `GET /api/users` — Retrieve all users
+- `POST /api/users` — Create a new user
+- `DELETE /api/users/:id` — Delete a user
 
-Primary: #083D77
+### Expenses Endpoints
+- `GET /api/expenses` — Retrieve all expenses
+- `POST /api/expenses` — Create a new expense
+- `DELETE /api/expenses/:id` — Delete an expense
 
-Secondary: #DA4167
+### Balances Endpoints
+- `GET /api/balances` — Calculate and retrieve current balances
 
-Accent: #F4D35E
+## 🎨 Styling & Design
 
-Background: #F4F4F4
+**Framework** — Tailwind CSS for utility-first, maintainable styling
 
-Typography: Clean, readable fonts
+**Responsive Design** — Mobile-first approach ensuring perfect display on all devices
 
-Responsive: Fully mobile-friendly design
+**Color Scheme** —
+- Primary: `#083D77` (Deep Blue)
+- Secondary: `#DA4167` (Coral Red)
+- Accent: `#F4D35E` (Golden Yellow)
+- Background: `#F4F4F4` (Light Gray)
 
-Icons: Lightweight SVG icons for consistency
+**Typography** — Clean, readable font stack optimized for web
 
-🚦 Validation & Error Handling
+## ✅ Validation & Error Handling
 
-Client-side validation with real-time feedback.
+**Form Validation** — Real-time validation with inline error messages for all input fields
 
-Form-level error messages for each input.
+**Error Boundaries** — Comprehensive error handling for failed API requests with user-friendly messages
 
-Toast notifications for all API outcomes.
+**User Feedback** — Toast notifications inform users of successful actions, errors, and warnings
 
-Comprehensive API error catching using Axios interceptors.
+**Loading States** — Visual indicators (spinners, disabled buttons) during API operations
 
-Loading states for async actions.
+## 🔧 Configuration
 
-🧰 Configuration Files
-Tailwind (tailwind.config.js)
-/** @type {import('tailwindcss').Config} */
+### Tailwind CSS (`tailwind.config.js`)
+
+```javascript
 export default {
   content: ['./src/**/*.{html,js,svelte}'],
   theme: {
@@ -177,90 +176,124 @@ export default {
   },
   plugins: [],
 }
+```
 
-Vite (vite.config.js)
+### Vite Configuration (`vite.config.js`)
+
+```javascript
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 
 export default defineConfig({
   plugins: [svelte()],
 })
+```
 
-🌐 Browser Support
+## 🌐 Browser Compatibility
 
-✅ Chrome 90+
-✅ Firefox 88+
-✅ Safari 14+
-✅ Edge 90+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
 
-🧩 Component Communication
+## 🚨 Troubleshooting
 
-Props → Data flows down from parent to child
+### Backend Connection Error
 
-Events → Child components communicate upward via createEventDispatcher
+If you see "Connection refused" errors:
 
-Stores → (Optional) Global shared state
-
-API Module → Centralized Axios instance for all HTTP calls
-
-🧪 Troubleshooting
-❌ Connection Refused
-
-Make sure the backend is running:
-
+```bash
+# Verify backend is running
 curl http://localhost:5000/api/users
 
-⚠️ Build Errors
+# Check if backend is accessible
+# Backend should return a list of users (possibly empty)
+```
+
+### Dependencies Installation Issues
+
+```bash
+# Clear cache and reinstall dependencies
 rm -rf node_modules package-lock.json
+npm cache clean --force
 npm install
+```
 
-🎨 Styles Not Loading
+### Styling Not Loading
+
+```bash
+# Restart development server to rebuild Tailwind
 npm run dev
+```
 
-🧠 Tips
+### API Endpoint Errors
 
-Open browser dev tools → Network tab for failed requests
+- Verify backend API is running on the correct port (default: 5000)
+- Check backend CORS configuration allows requests from `http://localhost:5173`
+- Review browser console for detailed error messages
+- Use browser DevTools Network tab to inspect API requests
 
-Check console logs for Axios errors
+## 💡 Development Tips
 
-Verify CORS configuration in backend
+- **Use DevTools** — Open browser DevTools to inspect network requests and console messages
+- **Check Logs** — Frontend and backend logs provide valuable debugging information
+- **Hot Reload** — Changes to component files automatically reload without losing state
+- **Code Quality** — Run `npm run lint` before committing code
+- **Testing Locally** — Use different browsers to verify responsive design
 
-Run npm run lint before committing
+## 📦 Production Build
 
-📦 Production Build
+### Create Production Bundle
 
-Build and preview:
-
+```bash
 npm run build
+```
+
+### Preview Production Build
+
+```bash
 npm run preview
+```
 
+Built files are generated in the `dist/` directory and ready for deployment to any static hosting service.
 
-The production-ready output will be in /dist.
+### Deployment Considerations
 
-Deploy the /dist folder to any static hosting service (e.g., Netlify, Vercel, or Nginx).
+- Update API base URL in `src/api/api.js` to point to your production backend
+- Ensure CORS headers are properly configured on your backend
+- Set appropriate environment variables for production
+- Test all features before deploying
 
-🧑‍💻 Contributing
+## 🔄 State Management
 
-Follow existing code and naming conventions.
+The application uses multiple approaches for state management:
 
-Run npm run lint and npm run format before committing.
+- **Svelte Stores** — Global reactive state for user and expense data
+- **Component State** — Local state management using `$state` within components
+- **Props** — Data flows down through component hierarchy
+- **API Integration** — Centralized API calls through `src/api/api.js`
 
-Test all user flows and ensure responsiveness.
+## 📝 Code Quality
 
-Validate API integration and error handling thoroughly.
+- **ESLint** — Linting with Svelte-specific rules for code consistency
+- **Prettier** — Automatic code formatting for uniform style
+- **Svelte Type Checking** — Type safety across components
 
-Use clear, descriptive commit messages.
+## 🤝 Contributing Guidelines
 
-🧾 License
+- Follow existing code structure and naming conventions
+- Write descriptive commit messages
+- Run `npm run lint` and `npm run format` before committing
+- Test all user workflows thoroughly
+- Ensure responsive design works across devices
+- Verify API integration and error handling
+
+## 📄 License
 
 This project is part of the Expense Splitter application suite.
-All rights reserved © 2025.
 
-💡 Developer Note
+---
 
-The goal of this project is to make expense tracking simple and transparent — whether you’re splitting rent, food bills, or travel costs.
+**Happy expense splitting!** 💰✨
 
-Built with ❤️ using Svelte + Tailwind CSS + Axios.
-
-Happy Expense Splitting! 💰✨
-
+For issues or questions, please check the backend repository or open an issue in the project repository.
