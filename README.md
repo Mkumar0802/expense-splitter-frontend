@@ -263,3 +263,4 @@ The goal of this project is to make expense tracking simple and transparent — 
 Built with ❤️ using Svelte + Tailwind CSS + Axios.
 
 Happy Expense Splitting! 💰✨
+
