@@ -1,130 +1,161 @@
-Based on your project structure, here's the complete README.md file tailored for your Expense Splitter Frontend:
+💸 Expense Splitter Frontend
 
-Expense Splitter Frontend
-A modern Svelte-based frontend application for splitting expenses between friends and roommates with a clean, intuitive interface.
+A modern, responsive Svelte-based web app for splitting expenses among friends, roommates, or groups — designed for simplicity, accuracy, and great user experience.
 
-🚀 Features
-👥 User Management - Add and manage users with validation
+🚀 Overview
 
-💰 Expense Tracking - Create expenses with automatic splitting
+The Expense Splitter Frontend is the client-side application of the Expense Splitter system.
+It helps users add friends, record shared expenses, and calculate who owes whom automatically — all with real-time feedback and a clean, mobile-friendly interface.
 
-⚖️ Balance Calculation - View who owes whom and clear settlement overview
+✨ Features
+👥 User Management
 
-🎨 Modern UI - Clean, responsive design with Tailwind CSS
+Add, edit, and view users with real-time validation.
 
-📱 Real-time Updates - Instant calculations and feedback
+Optional phone numbers with auto-formatting and Indian mobile validation.
 
-🔔 Toast Notifications - User-friendly feedback with svelte-french-toast
+💰 Expense Tracking
 
-🔍 Smart Search - Search and filter users in multi-select components
+Create expenses with automatic equal split calculations.
 
-📁 Project Structure
-text
+Auto-includes the payer in the participants list.
+
+⚖️ Balance Calculation
+
+Displays clear settlement overviews of who owes whom.
+
+Automatically recalculates balances after each expense.
+
+🎨 Modern UI
+
+Built with Svelte + Tailwind CSS.
+
+Clean, intuitive interface with responsive design.
+
+🔔 Notifications
+
+Toast-based feedback using svelte-french-toast.
+
+Smooth user feedback for every action (success, warning, error).
+
+🔍 Smart Search
+
+Powerful search and filter options in the participant selector.
+
+🧩 Project Structure
 expense-splitter-frontend/
 ├── src/
 │   ├── api/
-│   │   └── api.js                 # Axios configuration and API calls
+│   │   └── api.js                 # Axios configuration & API abstraction
 │   ├── components/
-│   │   ├── ExpenseForm.svelte     # Form for creating new expenses
-│   │   ├── ExpenseList.svelte     # Display list of expenses
-│   │   ├── MultiSelectCheckbox.svelte # User selection component
-│   │   ├── Navbar.svelte          # Navigation component
-│   │   └── UserForm.svelte        # Form for adding new users
+│   │   ├── ExpenseForm.svelte     # Create new expenses
+│   │   ├── ExpenseList.svelte     # List and view expenses
+│   │   ├── MultiSelectCheckbox.svelte # Smart participant selector
+│   │   ├── Navbar.svelte          # Navigation bar
+│   │   └── UserForm.svelte        # Add new users with validation
 │   ├── pages/
-│   │   ├── Balance.svelte         # Balance calculations page
-│   │   ├── Expenses.svelte        # Expenses management page
-│   │   └── Users.svelte           # Users management page
-│   ├── stores/                    # Svelte stores (if any)
-│   ├── utils/                     # Utility functions
+│   │   ├── Balance.svelte         # Balance overview
+│   │   ├── Expenses.svelte        # Expenses page
+│   │   └── Users.svelte           # Users page
+│   ├── stores/                    # (Optional) Svelte writable stores
+│   ├── utils/                     # Utility helpers
 │   ├── App.svelte                 # Root component
 │   ├── main.js                    # Application entry point
 │   └── app.css                    # Global styles
 ├── package.json
-├── tailwind.config.js            # Tailwind CSS configuration
-├── vite.config.js                # Vite configuration
-└── svelte.config.js              # Svelte configuration
+├── tailwind.config.js             # Tailwind setup
+├── vite.config.js                 # Vite bundler config
+└── svelte.config.js               # Svelte compiler config
+
 🛠️ Prerequisites
-Before running this project, make sure you have:
 
-Node.js (version 16 or higher) - Download here
+Before running this project, ensure you have:
 
-Backend API - The Expense Splitter backend should be running on http://localhost:5000
+Node.js ≥ 16.x → Download here
+
+Backend API → Expense Splitter Backend running at
+http://localhost:5000
 
 ⚡ Quick Start
-1. Install Dependencies
-bash
+1️⃣ Install Dependencies
 npm install
-2. Start Backend Server
-Make sure your backend API is running on http://localhost:5000 before starting the frontend.
 
-3. Run Development Server
-bash
+2️⃣ Start Backend Server
+
+Ensure your backend (Node.js/Express or similar) is running at:
+
+http://localhost:5000
+
+3️⃣ Run Frontend
 npm run dev
-The application will be available at http://localhost:5173
+
+
+Then open: http://localhost:5173
 
 📋 Available Scripts
-npm run dev - Start development server with hot reload
-
-npm run build - Build for production
-
-npm run preview - Preview production build locally
-
-npm run lint - Run ESLint to check code quality
-
-npm run format - Format code with Prettier
-
-🎯 Key Components Overview
-🔧 Core Components
-ExpenseForm - Smart form with auto-inclusion of payer in participants
-
-MultiSelectCheckbox - Searchable user selection with select-all functionality
-
-UserForm - Add users with phone number formatting and validation
-
-📄 Pages
-Users - Manage all users in the system
-
-Expenses - Create and view expense history
-
-Balance - See calculated balances and settlements
-
+Command	Description
+npm run dev	Start development server with hot reload
+npm run build	Build optimized production bundle
+npm run preview	Preview production build locally
+npm run lint	Lint code using ESLint
+npm run format	Auto-format code using Prettier
+🎯 Key Components
+Component	Description
+ExpenseForm.svelte	Smart form for creating expenses with payer auto-inclusion
+MultiSelectCheckbox.svelte	Searchable user selector with select-all toggle
+UserForm.svelte	Add users with name/phone validation and toast feedback
+ExpenseList.svelte	Displays expense history and summaries
+Balance.svelte	Calculates and displays settlements
+Navbar.svelte	Responsive navigation bar
 🔌 API Integration
-The frontend integrates with these backend endpoints:
+
+The frontend communicates with the backend using centralized API helpers (src/api/api.js) via Axios.
 
 Users API
-GET /users - Fetch all users
-
-POST /users - Create new user
-
+Method	Endpoint	Description
+GET	/users	Fetch all users
+POST	/users	Create a new user
 Expenses API
-GET /expenses - Fetch all expenses
-
-POST /expenses - Create new expense
-
+Method	Endpoint	Description
+GET	/expenses	Get all expenses
+POST	/expenses	Create a new expense
 Balances API
-GET /balances - Calculate and fetch balances between users
+Method	Endpoint	Description
+GET	/balances	Fetch calculated balances
+🎨 Styling & UI
 
-🎨 Styling & Design
-Framework: Tailwind CSS for utility-first styling
+Framework: Tailwind CSS
 
-Colors: Custom color scheme with primary, secondary, and accent colors
+Colors:
 
-Responsive: Mobile-first responsive design
+Primary: #083D77
 
-Icons: SVG icons for consistent styling
+Secondary: #DA4167
+
+Accent: #F4D35E
+
+Background: #F4F4F4
+
+Typography: Clean, readable fonts
+
+Responsive: Fully mobile-friendly design
+
+Icons: Lightweight SVG icons for consistency
 
 🚦 Validation & Error Handling
-Form Validation: Real-time field validation with error messages
 
-Error Boundaries: Comprehensive error handling for API calls
+Client-side validation with real-time feedback.
 
-User Feedback: Toast notifications for all user actions
+Form-level error messages for each input.
 
-Loading States: Visual feedback during API operations
+Toast notifications for all API outcomes.
 
-🔧 Configuration Files
-Tailwind Config (tailwind.config.js)
-javascript
+Comprehensive API error catching using Axios interceptors.
+
+Loading states for async actions.
+
+🧰 Configuration Files
+Tailwind (tailwind.config.js)
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,svelte}'],
@@ -146,88 +177,89 @@ export default {
   },
   plugins: [],
 }
-Vite Config (vite.config.js)
-javascript
+
+Vite (vite.config.js)
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 
 export default defineConfig({
   plugins: [svelte()],
 })
+
 🌐 Browser Support
-Chrome 90+
 
-Firefox 88+
+✅ Chrome 90+
+✅ Firefox 88+
+✅ Safari 14+
+✅ Edge 90+
 
-Safari 14+
+🧩 Component Communication
 
-Edge 90+
+Props → Data flows down from parent to child
 
-🚨 Troubleshooting
-Common Issues
-Connection Refused
+Events → Child components communicate upward via createEventDispatcher
 
-bash
-# Ensure backend is running
+Stores → (Optional) Global shared state
+
+API Module → Centralized Axios instance for all HTTP calls
+
+🧪 Troubleshooting
+❌ Connection Refused
+
+Make sure the backend is running:
+
 curl http://localhost:5000/api/users
-Build Errors
 
-bash
-# Clear dependencies and reinstall
+⚠️ Build Errors
 rm -rf node_modules package-lock.json
 npm install
-Styling Not Loading
 
-bash
-# Restart development server
+🎨 Styles Not Loading
 npm run dev
-Development Tips
-Use browser dev tools to check network requests
 
-Check console for API error messages
+🧠 Tips
 
-Verify backend CORS configuration
+Open browser dev tools → Network tab for failed requests
 
-Use npm run lint before committing code
+Check console logs for Axios errors
+
+Verify CORS configuration in backend
+
+Run npm run lint before committing
 
 📦 Production Build
-bash
-# Create production build
+
+Build and preview:
+
 npm run build
-
-# Preview production build
 npm run preview
-The built files will be in the dist directory, ready for deployment.
 
-🔄 Component Communication
-Events: Components communicate via Svelte's event system
 
-Props: Data flows down through props
+The production-ready output will be in /dist.
 
-Stores: Global state management (if implemented in stores/)
+Deploy the /dist folder to any static hosting service (e.g., Netlify, Vercel, or Nginx).
 
-API: Centralized API calls through api.js
+🧑‍💻 Contributing
 
-📝 Code Quality
-ESLint: Code linting with Svelte-specific rules
+Follow existing code and naming conventions.
 
-Prettier: Code formatting for consistent style
+Run npm run lint and npm run format before committing.
 
-Svelte Checks: Type checking for Svelte components
+Test all user flows and ensure responsiveness.
 
-🤝 Contributing
-Follow the existing code structure and naming conventions
+Validate API integration and error handling thoroughly.
 
-Run npm run lint and npm run format before committing
+Use clear, descriptive commit messages.
 
-Test all user flows thoroughly
+🧾 License
 
-Ensure responsive design works on different screen sizes
+This project is part of the Expense Splitter application suite.
+All rights reserved © 2025.
 
-Verify API integration and error handling
+💡 Developer Note
 
-📄 License
-This project is part of the Expense Splitter application.
+The goal of this project is to make expense tracking simple and transparent — whether you’re splitting rent, food bills, or travel costs.
 
-Happy expense splitting! 💰✨
+Built with ❤️ using Svelte + Tailwind CSS + Axios.
 
+Happy Expense Splitting! 💰✨
